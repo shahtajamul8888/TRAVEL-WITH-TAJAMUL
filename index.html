@@ -4,17 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Travel with Tajamul — Explore Kashmir</title>
-  <link rel="stylesheet" href="static/style.css" />
+  <link rel="stylesheet" href="style.css" />
   <meta name="description" content="Travel with Tajamul — curated tours, houseboats, treks and cultural experiences in Kashmir."/>
 </head>
 <body>
+
   <!-- Top marquee -->
   <div class="top-marquee">
     <marquee behavior="scroll" direction="left" scrollamount="6">Travel with Tajamul — Explore Kashmir's lakes, mountains & culture</marquee>
   </div>
 
   <!-- Background slideshow -->
-  <div id="bg-slideshow" class="bg-slideshow" aria-hidden="true"></div>
+  <div id="bg-slideshow" class="bg-slideshow"></div>
 
   <header class="site-header">
     <div class="header-inner">
@@ -25,41 +26,47 @@
         <a href="#itinerary">Itineraries</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-        <button id="bookBtn" class="cta">Book Now</button>
+        <a href="https://wa.me/919797472650" target="_blank" class="cta">Book Now</a>
       </nav>
     </div>
   </header>
 
-  <main id="home" class="main">
+  <main id="home">
+    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-inner">
-        <h1 id="heroTitle">Kashmir — Heaven on Earth, Curated by Tajamul</h1>
-        <p id="heroSub">Discover shimmering lakes, snow-kissed mountains, and warm valley hospitality. Tailor-made journeys for every traveler.</p>
+        <h1>Kashmir — Heaven on Earth, Curated by Tajamul</h1>
+        <p>Discover shimmering lakes, snow-kissed mountains, and warm valley hospitality. Tailor-made journeys for every traveler.</p>
         <div class="hero-ctas">
-          <button class="cta" onclick="openBooking()">Start Booking</button>
-          <a class="secondary" href="#itinerary">View Sample Itinerary</a>
+          <a class="cta" href="https://wa.me/919797472650" target="_blank">💬 Start Booking</a>
+          <a class="secondary" href="#itinerary">📋 View Sample Itinerary</a>
         </div>
       </div>
     </section>
 
+    <!-- Services Section -->
     <section id="services" class="cards-section">
       <h2>Our Services</h2>
       <div class="cards">
         <article class="card">
-          <h3>Houseboat Stays</h3>
+          <h3>Houseboat Stays 🌊</h3>
           <p>Sleep on Dal Lake in traditional houseboats — cozy, scenic, unforgettable.</p>
+          <a class="cta" href="https://wa.me/919797472650" target="_blank">Book Now</a>
         </article>
         <article class="card">
-          <h3>Guided Treks</h3>
+          <h3>Guided Treks 🥾</h3>
           <p>Day treks and multi-day routes with local guides who know every trail.</p>
+          <a class="cta" href="https://wa.me/919797472650" target="_blank">Book Now</a>
         </article>
         <article class="card">
-          <h3>Culture & Food Tours</h3>
+          <h3>Culture & Food Tours 🍲</h3>
           <p>Meet local families, taste Wazwan, and explore crafts and markets.</p>
+          <a class="cta" href="https://wa.me/919797472650" target="_blank">Book Now</a>
         </article>
       </div>
     </section>
 
+    <!-- Itinerary Section -->
     <section id="itinerary" class="itinerary">
       <h2>Sample 4-Day Itinerary</h2>
       <ol>
@@ -70,18 +77,21 @@
       </ol>
     </section>
 
+    <!-- Gallery Section -->
     <section id="gallery" class="gallery">
       <h2>Gallery</h2>
       <div class="thumbs">
-        <img src="images/img1.jpg" alt="Shikara on Dal Lake at sunset">
-        <img src="images/img2.jpg" alt="Snowy Gulmarg meadows">
-        <img src="images/img3.jpg" alt="Pahalgam river and mountains">
+        <img src="images/kashmir1.jpg" alt="Shikara on Dal Lake" onclick="openLightbox(this.src)">
+        <img src="images/kashmir2.jpg" alt="Snowy Gulmarg meadows" onclick="openLightbox(this.src)">
+        <img src="images/kashmir3.jpg" alt="Pahalgam river and mountains" onclick="openLightbox(this.src)">
+        <img src="images/kashmir4.jpg" alt="Shikara ride on Dal Lake" onclick="openLightbox(this.src)">
       </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="contact">
       <h2>Contact & Booking</h2>
-      <p>Want a custom plan? Send a message and Tajamul will reply with options and prices.</p>
+      <p>Send a message or WhatsApp to book your trip with Tajamul.</p>
       <form id="contactForm" onsubmit="submitForm(event)">
         <div class="row">
           <input id="name" name="name" placeholder="Your name" required />
@@ -90,38 +100,26 @@
         <textarea id="message" name="message" rows="4" placeholder="Tell us where you'd like to go" required></textarea>
         <div class="row">
           <button class="cta" type="submit">Send Request</button>
-          <button type="button" class="secondary" onclick="openBooking()">Quick Book</button>
+          <a class="secondary" href="https://wa.me/919797472650" target="_blank">Quick Book on WhatsApp</a>
         </div>
       </form>
-      <p class="small">Phone: +91 9XXXXXXXXX • Email: travelwithtajamul@example.com</p>
+      <p class="small">Phone: +91 9797472650 • Email: <a href="mailto:shahtajamul88@gmail.com">shahtajamul88@gmail.com</a></p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <p>© <span id="year"></span> Travel with Tajamul — Explore Kashmir</p>
-      <p class="small">Follow us: <a href="#">Instagram</a> • <a href="#">Facebook</a></p>
-    </div>
+    <p>© <span id="year"></span> Travel with Tajamul — Explore Kashmir</p>
+    <p class="small">Follow us: <a href="#">Instagram</a> • <a href="#">Facebook</a></p>
   </footer>
 
-  <!-- Booking modal -->
-  <div id="bookingModal" class="modal" aria-hidden="true">
-    <div class="modal-content">
-      <button class="close" onclick="closeBooking()">✕</button>
-      <h3>Book a Trip with Tajamul</h3>
-      <p>Choose your dates and preferences, and we'll send a plan.</p>
-      <form onsubmit="submitBooking(event)">
-        <input id="bname" placeholder="Full name" required />
-        <input id="bphone" placeholder="Phone or WhatsApp" required />
-        <input id="bdates" placeholder="Dates (e.g., 10-13 Dec)" required />
-        <textarea id="bnotes" placeholder="Any preferences"></textarea>
-        <div style="text-align:right">
-          <button class="cta" type="submit">Send Booking Request</button>
-        </div>
-      </form>
-    </div>
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Lightbox image">
   </div>
 
-  <script src="static/script.js"></script>
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/919797472650" target="_blank" class="whatsapp-btn">💬 Book on WhatsApp</a>
+
+  <script src="script.js"></script>
 </body>
 </html>
