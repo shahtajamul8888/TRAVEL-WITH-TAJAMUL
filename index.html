@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Travel with Tajamul — Explore Kashmir</title>
+  <link rel="stylesheet" href="static/style.css" />
+  <meta name="description" content="Travel with Tajamul — curated tours, houseboats, treks and cultural experiences in Kashmir."/>
+</head>
+<body>
+  <!-- Top marquee -->
+  <div class="top-marquee">
+    <marquee behavior="scroll" direction="left" scrollamount="6">Travel with Tajamul — Explore Kashmir's lakes, mountains & culture</marquee>
+  </div>
+
+  <!-- Background slideshow -->
+  <div id="bg-slideshow" class="bg-slideshow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">Travel with Tajamul</div>
+      <nav class="main-nav">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#itinerary">Itineraries</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <button id="bookBtn" class="cta">Book Now</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="main">
+    <section class="hero">
+      <div class="hero-inner">
+        <h1 id="heroTitle">Kashmir — Heaven on Earth, Curated by Tajamul</h1>
+        <p id="heroSub">Discover shimmering lakes, snow-kissed mountains, and warm valley hospitality. Tailor-made journeys for every traveler.</p>
+        <div class="hero-ctas">
+          <button class="cta" onclick="openBooking()">Start Booking</button>
+          <a class="secondary" href="#itinerary">View Sample Itinerary</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="cards-section">
+      <h2>Our Services</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Houseboat Stays</h3>
+          <p>Sleep on Dal Lake in traditional houseboats — cozy, scenic, unforgettable.</p>
+        </article>
+        <article class="card">
+          <h3>Guided Treks</h3>
+          <p>Day treks and multi-day routes with local guides who know every trail.</p>
+        </article>
+        <article class="card">
+          <h3>Culture & Food Tours</h3>
+          <p>Meet local families, taste Wazwan, and explore crafts and markets.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="itinerary" class="itinerary">
+      <h2>Sample 4-Day Itinerary</h2>
+      <ol>
+        <li><strong>Day 1 — Srinagar Welcome:</strong> Arrival, houseboat check-in, shikara ride at sunset.</li>
+        <li><strong>Day 2 — Gulmarg Escapade:</strong> Cable car to ridges, meadow walk, photography stops.</li>
+        <li><strong>Day 3 — Pahalgam Calm:</strong> Riverside strolls, local village visit, easy trek to Betaab Valley.</li>
+        <li><strong>Day 4 — Local Culture:</strong> Handicraft shopping, spice market visit, farewell tea with Tajamul.</li>
+      </ol>
+    </section>
+
+    <section id="gallery" class="gallery">
+      <h2>Gallery</h2>
+      <div class="thumbs">
+        <img src="images/img1.jpg" alt="Shikara on Dal Lake at sunset">
+        <img src="images/img2.jpg" alt="Snowy Gulmarg meadows">
+        <img src="images/img3.jpg" alt="Pahalgam river and mountains">
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact & Booking</h2>
+      <p>Want a custom plan? Send a message and Tajamul will reply with options and prices.</p>
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <div class="row">
+          <input id="name" name="name" placeholder="Your name" required />
+          <input id="email" name="email" type="email" placeholder="Email" required />
+        </div>
+        <textarea id="message" name="message" rows="4" placeholder="Tell us where you'd like to go" required></textarea>
+        <div class="row">
+          <button class="cta" type="submit">Send Request</button>
+          <button type="button" class="secondary" onclick="openBooking()">Quick Book</button>
+        </div>
+      </form>
+      <p class="small">Phone: +91 9XXXXXXXXX • Email: travelwithtajamul@example.com</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Travel with Tajamul — Explore Kashmir</p>
+      <p class="small">Follow us: <a href="#">Instagram</a> • <a href="#">Facebook</a></p>
+    </div>
+  </footer>
+
+  <!-- Booking modal -->
+  <div id="bookingModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close" onclick="closeBooking()">✕</button>
+      <h3>Book a Trip with Tajamul</h3>
+      <p>Choose your dates and preferences, and we'll send a plan.</p>
+      <form onsubmit="submitBooking(event)">
+        <input id="bname" placeholder="Full name" required />
+        <input id="bphone" placeholder="Phone or WhatsApp" required />
+        <input id="bdates" placeholder="Dates (e.g., 10-13 Dec)" required />
+        <textarea id="bnotes" placeholder="Any preferences"></textarea>
+        <div style="text-align:right">
+          <button class="cta" type="submit">Send Booking Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="static/script.js"></script>
+</body>
+</html>
