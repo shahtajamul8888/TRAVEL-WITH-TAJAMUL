@@ -10,7 +10,7 @@ const bgSlideshow = document.getElementById("bg-slideshow");
 bgSlideshow.style.position = "fixed";
 bgSlideshow.style.inset = "0";
 bgSlideshow.style.zIndex = "-1";
-bgSlideshow.style.background = 
+bgSlideshow.style.background =
   `linear-gradient(270deg,
     #f0f4f8, #cfd8dc, #b0bec5, #90a4ae, #78909c,
     #556f7a, #455a64, #37474f, #263238, #1c2833,
@@ -41,22 +41,3 @@ styleSheet.innerText = `
   }
 `;
 document.head.appendChild(styleSheet);
-
-// ========== 3. Typed Hero Text ==========
-const typedHeading = document.getElementById("typed-heading");
-const heroCaption = document.getElementById("heroCaption");
-const headings = ["Travel Kashmir with Tajamul"];
-const captions = ["Discover shimmering lakes, snow-kissed mountains, and warm valley hospitality. Tailor-made journeys for every traveler."];
-let tIndex = 0, cIndex = 0, charIndex = 0;
-function typeText() {
-  if (charIndex <= headings[tIndex].length) {
-    typedHeading.textContent = headings[tIndex].slice(0, charIndex);
-    charIndex++;
-    setTimeout(typeText, 60);
-  } else {
-    heroCaption.textContent = captions[cIndex];
-  }
-}
-typeText();
-
-// ... (Keep rest of JS unchanged: gallery, lightbox, destinations, contact form, year update)
