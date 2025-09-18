@@ -1,4 +1,9 @@
-// Background slideshow image cycling every 1 second with smooth fade
+// Animated entrance overlay (removes after 5 sec)
+setTimeout(() => {
+  document.getElementById("entrance-animation").style.display = "none";
+}, 5000);
+
+// Background slideshow cycling every 1 sec
 const slides = document.querySelectorAll('#bg-slideshow .slide');
 let currentIndex = 0;
 const slideInterval = 1000; // 1 second
@@ -11,24 +16,22 @@ function showNextSlide() {
 
 setInterval(showNextSlide, slideInterval);
 
-// Set current year in footer
+// Year update
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Lightbox open / close functionality for gallery images
+// Lightbox controls
 function openLightbox(src) {
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightbox-img");
-  lightboxImg.src = src;
-  lightbox.style.display = "flex";
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox").style.display = "flex";
 }
 
 function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
 }
 
-// Form submission placeholder - you can replace this with real handling
+// Contact form mock
 function submitForm(e) {
   e.preventDefault();
-  alert("Thank you for your request. We will contact you soon!");
+  alert("Thank you for your request. We'll contact you soon!");
   e.target.reset();
 }
