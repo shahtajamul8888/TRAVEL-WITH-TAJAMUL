@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Travel with Tajamul — Explore Kashmir</title>
-<link rel="stylesheet" href="style.css">
-<meta name="description" content="Travel with Tajamul — curated tours, houseboats, treks and cultural experiences in Kashmir.">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Travel Kashmir with Tajamul — Explore Kashmir</title>
+<meta name="description" content="Travel with Tajamul — curated tours, houseboats, treks and cultural experiences in Kashmir." />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <!-- Entrance Animation -->
-<div id="entrance-animation">
-  <span class="entrance-text">TRAVEL WITH TAJAMUL</span>
+<div id="entrance-animation" aria-label="Welcome screen animation">
+  <span class="entrance-text">TRAVEL KASHMIR WITH TAJAMUL</span>
 </div>
 
 <!-- Background Slideshow -->
-<div id="bg-slideshow" class="bg-slideshow"></div>
+<div id="bg-slideshow" class="bg-slideshow" aria-hidden="true"></div>
 
-<header class="site-header">
+<header class="site-header" role="banner">
   <div class="header-inner">
-    <a href="https://wa.me/919797472650" target="_blank" class="main-cta">Book Now</a>
-    <nav class="main-nav">
+    <a href="https://wa.me/919797472650" target="_blank" rel="noopener" class="main-cta" aria-label="Book Now on WhatsApp">Book Now</a>
+    <nav class="main-nav" role="navigation" aria-label="Primary Navigation">
       <a href="#home">Home</a>
       <a href="#services">Services</a>
       <a href="#itinerary">Itineraries</a>
@@ -31,25 +31,24 @@
   </div>
 </header>
 
-<main id="home">
+<main id="home" role="main">
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" aria-label="Hero Section presenting Travel Kashmir with Tajamul">
     <div class="hero-inner">
-      <h1 id="typed-heading"></h1>
+      <h1 id="typed-heading" aria-live="polite" aria-atomic="true" aria-relevant="text"></h1>
       <p id="heroCaption"></p>
       <div class="hero-ctas">
-        <a class="cta" href="https://wa.me/919797472650" target="_blank">💬 Start Booking</a>
+        <a class="cta" href="https://wa.me/919797472650" target="_blank" rel="noopener" aria-label="Start Booking on WhatsApp">💬 Start Booking</a>
         <a class="secondary" href="#itinerary">📋 View Sample Itinerary</a>
       </div>
     </div>
-    <div class="hero-slideshow"></div>
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="cards-section">
+  <section id="services" class="cards-section" aria-label="Our Services">
     <h2>Our Services</h2>
     <div class="cards">
-      <article class="card">
+      <article class="card" tabindex="0">
         <h3>Simple Booking 🌄</h3>
         <p>₹12,000 per person (2-3 days) with stay, lunch & dinner. Visit Gulmarg, Sonamarg, Pahalgam, Dal Lake, Mansbal Lake. Min-Max people: 4-20.</p>
         <ul>
@@ -59,9 +58,9 @@
           <li>Local guide</li>
           <li>House boat or Room Stay</li>
         </ul>
-        <a class="cta" href="https://wa.me/919797472650" target="_blank">Book Now</a>
+        <a class="cta" href="https://wa.me/919797472650" target="_blank" rel="noopener">Book Now</a>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0">
         <h3>Premium Booking ✨</h3>
         <p>₹19,000 per person (5-7 days) with stay, lunch & dinner. Visit 10+ places. Min-Max people: 4-20.</p>
         <ul>
@@ -71,13 +70,13 @@
           <li>Local guide</li>
           <li>House boat or Room Stay</li>
         </ul>
-        <a class="cta" href="https://wa.me/919797472650" target="_blank">Book Now</a>
+        <a class="cta" href="https://wa.me/919797472650" target="_blank" rel="noopener">Book Now</a>
       </article>
     </div>
   </section>
 
   <!-- Itinerary Section -->
-  <section id="itinerary" class="itinerary">
+  <section id="itinerary" class="itinerary" aria-label="Sample 4-Day Itinerary">
     <h2>Sample 4-Day Itinerary</h2>
     <ol>
       <li><strong>Day 1 — Srinagar Welcome:</strong> Arrival, houseboat check-in, shikara ride at sunset.</li>
@@ -88,43 +87,44 @@
   </section>
 
   <!-- Gallery Section -->
-  <section id="gallery" class="gallery">
+  <section id="gallery" class="gallery" aria-label="Gallery of Kashmir photographs">
     <h2>Gallery</h2>
     <div id="galleryGrid" class="thumbs"></div>
   </section>
 
   <!-- Popular Destinations -->
-  <section id="popular-destinations">
+  <section id="popular-destinations" aria-label="Popular Destinations in Kashmir">
     <h2>Popular Destinations in Kashmir</h2>
-    <div class="destinations-slider" id="destinationsSlider"></div>
+    <div class="destinations-slider" id="destinationsSlider" tabindex="0" aria-live="polite"></div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="contact">
+  <section id="contact" class="contact" aria-label="Contact and Booking Form">
     <h2>Contact & Booking</h2>
     <p>Send a message or WhatsApp to book your trip with Tajamul.</p>
     <form id="contactForm">
       <div class="row">
-        <input id="name" name="name" placeholder="Your name" required />
-        <input id="email" name="email" type="email" placeholder="Email" required />
+        <input id="name" name="name" placeholder="Your name" required aria-required="true" />
+        <input id="email" name="email" type="email" placeholder="Email" required aria-required="true" />
       </div>
-      <textarea id="message" name="message" rows="4" placeholder="Tell us where you'd like to go" required></textarea>
+      <textarea id="message" name="message" rows="4" placeholder="Tell us where you'd like to go" required aria-required="true"></textarea>
       <div class="row">
         <button class="cta" type="submit">Send Request</button>
-        <a class="secondary" href="https://wa.me/919797472650" target="_blank">Quick Book on WhatsApp</a>
+        <a class="secondary" href="https://wa.me/919797472650" target="_blank" rel="noopener">Quick Book on WhatsApp</a>
       </div>
     </form>
     <p class="small">Phone: +91 9797472650 • Email: <a href="mailto:shahtajamul88@gmail.com">shahtajamul88@gmail.com</a></p>
   </section>
 </main>
 
-<footer class="site-footer">
-  <p>© <span id="year"></span> Travel with Tajamul — Explore Kashmir</p>
-  <p class="small">Follow us: <a href="https://www.instagram.com/tajamull.shah" target="_blank">Instagram</a> • <a href="https://www.facebook.com/share/1AyuynNPan/" target="_blank">Facebook</a></p>
+<footer class="site-footer" role="contentinfo">
+  <p>© <span id="year"></span> Travel Kashmir with Tajamul</p>
+  <p class="small">Follow us: <a href="https://www.instagram.com/tajamull.shah" target="_blank" rel="noopener">Instagram</a> • <a href="https://www.facebook.com/share/1AyuynNPan/" target="_blank" rel="noopener">Facebook</a></p>
+  <p class="footer-dev">Developed by Tajamul</p>
 </footer>
 
 <!-- WhatsApp Button -->
-<a href="https://wa.me/919797472650" target="_blank" class="whatsapp-btn">💬</a>
+<a href="https://wa.me/919797472650" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Contact via WhatsApp">💬</a>
 
 <script src="script.js"></script>
 </body>
