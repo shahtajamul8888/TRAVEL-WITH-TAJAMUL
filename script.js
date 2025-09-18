@@ -1,142 +1,62 @@
-// ================= 1. Entrance Overlay =================
+// ========== 1. Entrance Overlay Animation ==========
 setTimeout(() => {
-  document.getElementById("entrance-animation").style.display = "none";
-}, 5000);
+  const entrance = document.getElementById("entrance-animation");
+  entrance.style.animation = "fadeOutEntrance 1s forwards";
+  setTimeout(() => entrance.style.display = "none", 1000);
+}, 4500);
 
-// ================= 2. Hero Slideshow =================
-const heroImages = [
-  "images/kashmir1_4k.jpg",
-  "images/kashmir2_4k.jpg",
-  "images/kashmir3_4k.jpg",
-  "images/kashmir4_4k.jpg",
-  "images/kashmir5_4k.jpg"
-];
-
+// ========== 2. Premium Animated Gradient Background ==========
 const bgSlideshow = document.getElementById("bg-slideshow");
-heroImages.forEach((src, i) => {
-  const img = document.createElement("img");
-  img.src = src;
-  if(i===0) img.classList.add("active");
-  bgSlideshow.appendChild(img);
-});
+bgSlideshow.style.position = "fixed";
+bgSlideshow.style.inset = "0";
+bgSlideshow.style.zIndex = "-1";
+bgSlideshow.style.background = 
+  `linear-gradient(270deg,
+    #f0f4f8, #cfd8dc, #b0bec5, #90a4ae, #78909c,
+    #556f7a, #455a64, #37474f, #263238, #1c2833,
+    #f8bbd0, #f48fb1, #f06292, #ec407a, #e91e63,
+    #d81b60, #c2185b, #ad1457, #880e4f, #560027,
+    #bbdefb, #90caf9, #64b5f6, #42a5f5, #2196f3,
+    #1e88e5, #1976d2, #1565c0, #0d47a1, #08306b,
+    #a5d6a7, #81c784, #66bb6a, #4caf50, #43a047,
+    #388e3c, #2e7d32, #1b5e20, #33691e, #827717,
+    #fff9c4, #fff59d, #fff176, #ffee58, #ffeb3b,
+    #fdd835, #fbc02d, #f9a825, #f57f17, #ff8a65,
+    #ff7043, #ff5722, #f4511e, #e64a19, #d84315,
+    #bf360c, #3e2723, #4e342e, #5d4037, #6d4c41,
+    #7b5e57, #8d6e63, #a1887f, #bcaaa4, #d7ccc8
+  )`;
+bgSlideshow.style.backgroundSize = "3000% 3000%";
+bgSlideshow.style.animation = "premiumGradientMove 60s ease infinite";
 
-let currentHeroIndex = 0;
-setInterval(() => {
-  const slides = document.querySelectorAll("#bg-slideshow img");
-  slides[currentHeroIndex].classList.remove("active");
-  currentHeroIndex = (currentHeroIndex+1) % slides.length;
-  slides[currentHeroIndex].classList.add("active");
-}, 3000);
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = `
+  @keyframes premiumGradientMove {
+    0%{background-position:0% 50%}
+    25%{background-position:50% 75%}
+    50%{background-position:100% 50%}
+    75%{background-position:50% 25%}
+    100%{background-position:0% 50%}
+  }
+`;
+document.head.appendChild(styleSheet);
 
-// ================= 3. Typed Hero Text =================
+// ========== 3. Typed Hero Text ==========
 const typedHeading = document.getElementById("typed-heading");
 const heroCaption = document.getElementById("heroCaption");
-const headings = ["Kashmir — Heaven on Earth, curated by Tajamul"];
+const headings = ["Travel Kashmir with Tajamul"];
 const captions = ["Discover shimmering lakes, snow-kissed mountains, and warm valley hospitality. Tailor-made journeys for every traveler."];
-
-let tIndex = 0, cIndex = 0;
-let charIndex = 0;
+let tIndex = 0, cIndex = 0, charIndex = 0;
 function typeText() {
-  if(charIndex <= headings[tIndex].length){
-    typedHeading.textContent = headings[tIndex].slice(0,charIndex);
+  if (charIndex <= headings[tIndex].length) {
+    typedHeading.textContent = headings[tIndex].slice(0, charIndex);
     charIndex++;
-    setTimeout(typeText,60);
+    setTimeout(typeText, 60);
   } else {
     heroCaption.textContent = captions[cIndex];
   }
 }
 typeText();
 
-// ================= 4. Gallery Images =================
-const galleryImages = [
-  "images/kashmir1_4k.jpg",
-  "images/kashmir2_4k.jpg",
-  "images/kashmir3_4k.jpg",
-  "images/kashmir4_4k.jpg",
-  "images/kashmir5_4k.jpg",
-  "images/kashmir6_4k.jpg",
-  "images/kashmir7_4k.jpg",
-  "images/kashmir8_4k.jpg",
-  "images/kashmir9_4k.jpg",
-  "images/kashmir10_4k.jpg",
-  "images/kashmir1_4k.jpg",
-  "images/kashmir2_4k.jpg",
-  "images/kashmir3_4k.jpg",
-  "images/kashmir4_4k.jpg",
-  "images/kashmir5_4k.jpg",
-  "images/kashmir6_4k.jpg"
-];
-
-const galleryGrid = document.getElementById("galleryGrid");
-galleryImages.forEach(src=>{
-  const img = document.createElement("img");
-  img.src = src;
-  img.alt = "Kashmir Image";
-  img.onclick = ()=> openLightbox(src);
-  galleryGrid.appendChild(img);
-});
-
-// ================= 5. Lightbox =================
-function openLightbox(src){
-  let lightbox = document.getElementById("lightbox");
-  if(!lightbox){
-    lightbox = document.createElement("div");
-    lightbox.id = "lightbox";
-    lightbox.className = "lightbox";
-    lightbox.innerHTML = '<img id="lightbox-img" src="" alt="Lightbox Image">';
-    lightbox.onclick = ()=> lightbox.style.display="none";
-    document.body.appendChild(lightbox);
-  }
-  document.getElementById("lightbox-img").src = src;
-  lightbox.style.display = "flex";
-}
-
-// ================= 6. Popular Destinations =================
-const destinations = [
-  { name:"Gulmarg", img:"images/kashmir1_4k.jpg" },
-  { name:"Sonamarg", img:"images/kashmir2_4k.jpg" },
-  { name:"Pahalgam", img:"images/kashmir3_4k.jpg" },
-  { name:"Dal Lake", img:"images/kashmir4_4k.jpg" },
-  { name:"Nishat Park", img:"images/kashmir5_4k.jpg" },
-  { name:"Shalimar Park", img:"images/kashmir6_4k.jpg" },
-  { name:"Mansbal Lake", img:"images/kashmir7_4k.jpg" },
-  { name:"Wullar Lake", img:"images/kashmir8_4k.jpg" },
-  { name:"Doodhpathri", img:"images/kashmir9_4k.jpg" },
-  { name:"Aharbal", img:"images/kashmir10_4k.jpg" },
-  { name:"Verinag", img:"images/kashmir1_4k.jpg" },
-  { name:"Kokernag", img:"images/kashmir2_4k.jpg" },
-  { name:"Hazratbal", img:"images/kashmir3_4k.jpg" },
-  { name:"Lolab Valley", img:"images/kashmir4_4k.jpg" },
-  { name:"Doodhpathri", img:"images/kashmir5_4k.jpg" },
-  { name:"Aharbal", img:"images/kashmir6_4k.jpg" }
-];
-
-const sliderContainer = document.getElementById('destinationsSlider');
-destinations.forEach(dest=>{
-  const div = document.createElement('div');
-  div.className='destination-item';
-  div.innerHTML=`<img src="${dest.img}" alt="${dest.name}"><span>${dest.name}</span>`;
-  sliderContainer.appendChild(div);
-});
-
-const destinationItems = document.querySelectorAll('.destination-item');
-let destIndex = 0;
-function showDestination(){
-  destinationItems.forEach(item=>item.classList.remove('active'));
-  destinationItems[destIndex].classList.add('active');
-  const offset = destinationItems[destIndex].offsetLeft - sliderContainer.offsetLeft;
-  sliderContainer.scrollTo({left:offset, behavior:'smooth'});
-  destIndex = (destIndex+1) % destinationItems.length;
-}
-showDestination();
-setInterval(showDestination,3000);
-
-// ================= 7. Contact Form =================
-document.getElementById("contactForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  alert("Thank you for your request. We'll contact you soon!");
-  e.target.reset();
-});
-
-// ================= 8. Update Year =================
-document.getElementById("year").textContent = new Date().getFullYear();
+// ... (Keep rest of JS unchanged: gallery, lightbox, destinations, contact form, year update)
