@@ -1,53 +1,34 @@
-// images for background slideshow (place images in images/)
-const bgImages = [
-  'images/img1.jpg',
-  'images/img2.jpg',
-  'images/img3.jpg'
-];
+// Background slideshow image cycling every 1 second with smooth fade
+const slides = document.querySelectorAll('#bg-slideshow .slide');
+let currentIndex = 0;
+const slideInterval = 1000; // 1 second
 
-const bg = document.getElementById('bg-slideshow');
-let bgIndex = 0;
-function setBg(i){
-  bg.style.backgroundImage = `url(${bgImages[i]})`;
-}
-setBg(0);
-setInterval(() => {
-  bgIndex = (bgIndex + 1) % bgImages.length;
-  setBg(bgIndex);
-}, 4000);
-
-// footer year
-document.getElementById('year').innerText = new Date().getFullYear();
-
-// Booking modal functions
-function openBooking(){
-  const m = document.getElementById('bookingModal');
-  m.setAttribute('aria-hidden', 'false');
-}
-function closeBooking(){
-  const m = document.getElementById('bookingModal');
-  m.setAttribute('aria-hidden', 'true');
+function showNextSlide() {
+  slides[currentIndex].classList.remove('active');
+  currentIndex = (currentIndex + 1) % slides.length;
+  slides[currentIndex].classList.add('active');
 }
 
-// Contact form submit (dummy)
-function submitForm(e){
+setInterval(showNextSlide, slideInterval);
+
+// Set current year in footer
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Lightbox open / close functionality for gallery images
+function openLightbox(src) {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  lightboxImg.src = src;
+  lightbox.style.display = "flex";
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+// Form submission placeholder - you can replace this with real handling
+function submitForm(e) {
   e.preventDefault();
-  alert('Thanks! Your request has been sent. Tajamul will contact you soon.');
-  document.getElementById('contactForm').reset();
+  alert("Thank you for your request. We will contact you soon!");
+  e.target.reset();
 }
-
-// Booking submit (dummy)
-function submitBooking(e){
-  e.preventDefault();
-  alert('Booking request sent. We will contact you on the number provided.');
-  closeBooking();
-}
-
-// Optional: Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', function(e){
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if(target) target.scrollIntoView({behavior:'smooth'});
-  });
-});
