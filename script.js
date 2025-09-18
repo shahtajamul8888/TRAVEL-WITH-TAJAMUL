@@ -1,140 +1,142 @@
-// ================= Hero Typing Animation =================
-const heading = document.getElementById('typed-heading');
-const headingText = "Kashmir — Heaven on Earth, curated by Tajamul";
-let hIndex = 0;
+// ================= 1. Entrance Overlay =================
+setTimeout(() => {
+  document.getElementById("entrance-animation").style.display = "none";
+}, 5000);
 
-function typeHeroText() {
-  if(hIndex < headingText.length){
-    heading.textContent += headingText.charAt(hIndex);
-    hIndex++;
-    setTimeout(typeHeroText, 100);
-  }
-}
-heading.textContent = "";
-typeHeroText();
-
-// ================= Hero Slideshow + Captions =================
-const heroImages = [];
-const captions = [
-  "Explore the serene beauty of Kashmir",
-  "Experience adventure in Gulmarg",
-  "Relax in cozy houseboats at Dal Lake",
-  "Trek the lush valleys of Pahalgam",
-  "Sunset views in Sonmarg",
-  "Snowy peaks of Gulmarg",
-  "Riverside strolls in Pahalgam",
-  "Wazwan & local culture tours"
+// ================= 2. Hero Slideshow =================
+const heroImages = [
+  "images/kashmir1_4k.jpg",
+  "images/kashmir2_4k.jpg",
+  "images/kashmir3_4k.jpg",
+  "images/kashmir4_4k.jpg",
+  "images/kashmir5_4k.jpg"
 ];
 
-// Generate 100+ images dynamically
-for(let i=1; i<=100; i++){
-  heroImages.push(`images/kashmir${(i%10)+1}.jpg`); // images kashmir1.jpg to kashmir10.jpg repeated
-}
-
-const heroSlideshow = document.querySelector('.hero-slideshow');
-const heroCaption = document.getElementById('heroCaption');
-
-heroImages.slice(0,10).forEach(src => {
-  const img = document.createElement('img');
+const bgSlideshow = document.getElementById("bg-slideshow");
+heroImages.forEach((src, i) => {
+  const img = document.createElement("img");
   img.src = src;
-  heroSlideshow.appendChild(img);
+  if(i===0) img.classList.add("active");
+  bgSlideshow.appendChild(img);
 });
 
-const slides = document.querySelectorAll('.hero-slideshow img');
-let slideIndex = 0;
+let currentHeroIndex = 0;
+setInterval(() => {
+  const slides = document.querySelectorAll("#bg-slideshow img");
+  slides[currentHeroIndex].classList.remove("active");
+  currentHeroIndex = (currentHeroIndex+1) % slides.length;
+  slides[currentHeroIndex].classList.add("active");
+}, 3000);
 
-function showSlide() {
-  slides.forEach(img => img.classList.remove('active'));
-  slides[slideIndex].classList.add('active');
+// ================= 3. Typed Hero Text =================
+const typedHeading = document.getElementById("typed-heading");
+const heroCaption = document.getElementById("heroCaption");
+const headings = ["Kashmir — Heaven on Earth, curated by Tajamul"];
+const captions = ["Discover shimmering lakes, snow-kissed mountains, and warm valley hospitality. Tailor-made journeys for every traveler."];
 
-  // Caption fade
-  heroCaption.classList.remove('active');
-  setTimeout(()=>{
-    heroCaption.textContent = captions[slideIndex % captions.length];
-    heroCaption.classList.add('active');
-  },500);
-
-  slideIndex = (slideIndex + 1) % slides.length;
-}
-showSlide();
-setInterval(showSlide,4000);
-
-// ================= Smooth Scroll =================
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-  anchor.addEventListener('click', function(e){
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-  });
-});
-
-// ================= Services Fade-in on Scroll =================
-const cardsContainer = document.querySelector('.cards');
-window.addEventListener('scroll', ()=>{
-  if(cardsContainer){
-    const rect = cardsContainer.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100){
-      cardsContainer.classList.add('show');
-    }
+let tIndex = 0, cIndex = 0;
+let charIndex = 0;
+function typeText() {
+  if(charIndex <= headings[tIndex].length){
+    typedHeading.textContent = headings[tIndex].slice(0,charIndex);
+    charIndex++;
+    setTimeout(typeText,60);
+  } else {
+    heroCaption.textContent = captions[cIndex];
   }
-});
+}
+typeText();
 
-// ================= Gallery Fade-in on Scroll =================
-const galleryGrid = document.getElementById('galleryGrid');
-const galleryImages = [];
-// Add 100+ Kashmir images
-for(let i=1; i<=100; i++){
-  const img = document.createElement('img');
-  img.src = `images/kashmir${(i%10)+1}.jpg`; // kashmir1.jpg to kashmir10.jpg repeated
+// ================= 4. Gallery Images =================
+const galleryImages = [
+  "images/kashmir1_4k.jpg",
+  "images/kashmir2_4k.jpg",
+  "images/kashmir3_4k.jpg",
+  "images/kashmir4_4k.jpg",
+  "images/kashmir5_4k.jpg",
+  "images/kashmir6_4k.jpg",
+  "images/kashmir7_4k.jpg",
+  "images/kashmir8_4k.jpg",
+  "images/kashmir9_4k.jpg",
+  "images/kashmir10_4k.jpg",
+  "images/kashmir1_4k.jpg",
+  "images/kashmir2_4k.jpg",
+  "images/kashmir3_4k.jpg",
+  "images/kashmir4_4k.jpg",
+  "images/kashmir5_4k.jpg",
+  "images/kashmir6_4k.jpg"
+];
+
+const galleryGrid = document.getElementById("galleryGrid");
+galleryImages.forEach(src=>{
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = "Kashmir Image";
+  img.onclick = ()=> openLightbox(src);
   galleryGrid.appendChild(img);
-  galleryImages.push(img);
-}
-
-window.addEventListener('scroll', ()=>{
-  galleryImages.forEach(img=>{
-    const rect = img.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 50){
-      img.classList.add('show');
-    }
-  });
 });
 
-// ================= Particles JS =================
-particlesJS("particles-js", {
-  "particles": {
-    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-    "color": { "value": "#ffffff" },
-    "shape": { "type": "circle" },
-    "opacity": { "value": 0.4, "random": true },
-    "size": { "value": 2, "random": true },
-    "line_linked": { "enable": false },
-    "move": { "enable": true, "speed": 0.3, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }
-  },
-  "retina_detect": true
+// ================= 5. Lightbox =================
+function openLightbox(src){
+  let lightbox = document.getElementById("lightbox");
+  if(!lightbox){
+    lightbox = document.createElement("div");
+    lightbox.id = "lightbox";
+    lightbox.className = "lightbox";
+    lightbox.innerHTML = '<img id="lightbox-img" src="" alt="Lightbox Image">';
+    lightbox.onclick = ()=> lightbox.style.display="none";
+    document.body.appendChild(lightbox);
+  }
+  document.getElementById("lightbox-img").src = src;
+  lightbox.style.display = "flex";
+}
+
+// ================= 6. Popular Destinations =================
+const destinations = [
+  { name:"Gulmarg", img:"images/kashmir1_4k.jpg" },
+  { name:"Sonamarg", img:"images/kashmir2_4k.jpg" },
+  { name:"Pahalgam", img:"images/kashmir3_4k.jpg" },
+  { name:"Dal Lake", img:"images/kashmir4_4k.jpg" },
+  { name:"Nishat Park", img:"images/kashmir5_4k.jpg" },
+  { name:"Shalimar Park", img:"images/kashmir6_4k.jpg" },
+  { name:"Mansbal Lake", img:"images/kashmir7_4k.jpg" },
+  { name:"Wullar Lake", img:"images/kashmir8_4k.jpg" },
+  { name:"Doodhpathri", img:"images/kashmir9_4k.jpg" },
+  { name:"Aharbal", img:"images/kashmir10_4k.jpg" },
+  { name:"Verinag", img:"images/kashmir1_4k.jpg" },
+  { name:"Kokernag", img:"images/kashmir2_4k.jpg" },
+  { name:"Hazratbal", img:"images/kashmir3_4k.jpg" },
+  { name:"Lolab Valley", img:"images/kashmir4_4k.jpg" },
+  { name:"Doodhpathri", img:"images/kashmir5_4k.jpg" },
+  { name:"Aharbal", img:"images/kashmir6_4k.jpg" }
+];
+
+const sliderContainer = document.getElementById('destinationsSlider');
+destinations.forEach(dest=>{
+  const div = document.createElement('div');
+  div.className='destination-item';
+  div.innerHTML=`<img src="${dest.img}" alt="${dest.name}"><span>${dest.name}</span>`;
+  sliderContainer.appendChild(div);
 });
 
-// ================= Contact Form =================
-const contactForm = document.getElementById('contactForm');
-if(contactForm){
-  contactForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    alert("Thank you for your request. We'll contact you soon!");
-    e.target.reset();
-  });
+const destinationItems = document.querySelectorAll('.destination-item');
+let destIndex = 0;
+function showDestination(){
+  destinationItems.forEach(item=>item.classList.remove('active'));
+  destinationItems[destIndex].classList.add('active');
+  const offset = destinationItems[destIndex].offsetLeft - sliderContainer.offsetLeft;
+  sliderContainer.scrollTo({left:offset, behavior:'smooth'});
+  destIndex = (destIndex+1) % destinationItems.length;
 }
+showDestination();
+setInterval(showDestination,3000);
 
-// ================= Trip Planner Form =================
-const tripForm = document.getElementById('tripForm');
-if(tripForm){
-  tripForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    alert("Trip search submitted! We'll help you plan your Kashmir trip.");
-    e.target.reset();
-  });
-}
+// ================= 7. Contact Form =================
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  alert("Thank you for your request. We'll contact you soon!");
+  e.target.reset();
+});
 
-// ================= Update Year =================
+// ================= 8. Update Year =================
 document.getElementById("year").textContent = new Date().getFullYear();
