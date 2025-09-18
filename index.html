@@ -1,102 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel with Tajamul — Explore Kashmir</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel with Tajamul — Explore Kashmir</title>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="Travel with Tajamul — curated tours, houseboats, treks and cultural experiences in Kashmir.">
 </head>
 <body>
 
-<!-- Particles / Cinematic Background -->
-<div id="particles-js"></div>
+<!-- Entrance Animation -->
+<div id="entrance-animation">
+  <span class="entrance-text">TRAVEL WITH TAJAMUL</span>
+</div>
 
-<!-- Hero Section -->
-<header id="hero">
-  <div class="hero-slideshow"></div>
-  <div class="hero-content">
-    <h1 id="typed-heading">Kashmir — Heaven on Earth, curated by Tajamul</h1>
-    <div class="hero-cta">
-      <a href="#services" class="cta">Our Services</a>
-      <a href="#itinerary" class="secondary">View Itinerary</a>
-    </div>
+<!-- Background Slideshow -->
+<div id="bg-slideshow" class="bg-slideshow"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://wa.me/919797472650" target="_blank" class="main-cta">Book Now</a>
+    <nav class="main-nav">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#itinerary">Itineraries</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#popular-destinations">Destinations</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
-  <div class="hero-caption" id="heroCaption">Explore the serene beauty of Kashmir</div>
 </header>
 
-<!-- Trip Planner Section -->
-<section id="trip-planner">
-  <h2>Plan Your Trip</h2>
-  <form id="tripForm">
-    <input type="text" placeholder="Destination" required>
-    <input type="date" placeholder="Start Date" required>
-    <input type="date" placeholder="End Date" required>
-    <input type="number" placeholder="Travelers" min="1" required>
-    <button type="submit" class="cta">Search</button>
-  </form>
-</section>
-
-<!-- Services Section -->
-<section id="services">
-  <h2>Our Services</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Houseboat Stays 🌊</h3>
-      <p>Sleep on Dal Lake in traditional houseboats — cozy, scenic, unforgettable.</p>
-      <a href="https://wa.me/919797472650" target="_blank" class="cta">Book Now</a>
+<main id="home">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 id="typed-heading"></h1>
+      <p id="heroCaption"></p>
+      <div class="hero-ctas">
+        <a class="cta" href="https://wa.me/919797472650" target="_blank">💬 Start Booking</a>
+        <a class="secondary" href="#itinerary">📋 View Sample Itinerary</a>
+      </div>
     </div>
-    <div class="card">
-      <h3>Guided Treks 🥾</h3>
-      <p>Day treks and multi-day routes with local guides who know every trail.</p>
-      <a href="https://wa.me/919797472650" target="_blank" class="cta">Book Now</a>
+    <div class="hero-slideshow"></div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="cards-section">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Simple Booking 🌄</h3>
+        <p>₹12,000 per person (2-3 days) with stay, lunch & dinner. Visit Gulmarg, Sonamarg, Pahalgam, Dal Lake, Mansbal Lake. Min-Max people: 4-20.</p>
+        <ul>
+          <li>Kashmir traditional tasty Wazwan</li>
+          <li>Meet local families</li>
+          <li>Day Treks</li>
+          <li>Local guide</li>
+          <li>House boat or Room Stay</li>
+        </ul>
+        <a class="cta" href="https://wa.me/919797472650" target="_blank">Book Now</a>
+      </article>
+      <article class="card">
+        <h3>Premium Booking ✨</h3>
+        <p>₹19,000 per person (5-7 days) with stay, lunch & dinner. Visit 10+ places. Min-Max people: 4-20.</p>
+        <ul>
+          <li>Kashmir traditional tasty Wazwan</li>
+          <li>Meet local families</li>
+          <li>Day Treks</li>
+          <li>Local guide</li>
+          <li>House boat or Room Stay</li>
+        </ul>
+        <a class="cta" href="https://wa.me/919797472650" target="_blank">Book Now</a>
+      </article>
     </div>
-    <div class="card">
-      <h3>Culture & Food Tours 🍲</h3>
-      <p>Meet local families, taste Wazwan, and explore crafts and markets.</p>
-      <a href="https://wa.me/919797472650" target="_blank" class="cta">Book Now</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Gallery Section -->
-<section id="gallery">
-  <h2>Popular Destinations</h2>
-  <div class="gallery-grid" id="galleryGrid"></div>
-</section>
+  <!-- Itinerary Section -->
+  <section id="itinerary" class="itinerary">
+    <h2>Sample 4-Day Itinerary</h2>
+    <ol>
+      <li><strong>Day 1 — Srinagar Welcome:</strong> Arrival, houseboat check-in, shikara ride at sunset.</li>
+      <li><strong>Day 2 — Gulmarg Escapade:</strong> Cable car to ridges, meadow walk, photography stops.</li>
+      <li><strong>Day 3 — Pahalgam Calm:</strong> Riverside strolls, local village visit, easy trek to Betaab Valley.</li>
+      <li><strong>Day 4 — Local Culture:</strong> Handicraft shopping, spice market visit, farewell tea with Tajamul.</li>
+    </ol>
+  </section>
 
-<!-- Itinerary Section -->
-<section id="itinerary">
-  <h2>Sample 4-Day Itinerary</h2>
-  <div class="timeline">
-    <div class="timeline-day"><strong>Day 1:</strong> Srinagar arrival, houseboat check-in, shikara ride.</div>
-    <div class="timeline-day"><strong>Day 2:</strong> Gulmarg cable car, meadow walk, photography spots.</div>
-    <div class="timeline-day"><strong>Day 3:</strong> Pahalgam river strolls, village visit, Betaab Valley trek.</div>
-    <div class="timeline-day"><strong>Day 4:</strong> Handicraft shopping, spice market, farewell tea with Tajamul.</div>
-  </div>
-</section>
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery">
+    <h2>Gallery</h2>
+    <div id="galleryGrid" class="thumbs"></div>
+  </section>
 
-<!-- Contact / Booking Section -->
-<section id="contact">
-  <h2>Book Your Trip</h2>
-  <form id="contactForm">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <textarea name="message" placeholder="Your message" required></textarea>
-    <button type="submit" class="cta">Send Request</button>
-    <a href="https://wa.me/919797472650" target="_blank" class="secondary">Quick Book on WhatsApp</a>
-  </form>
-</section>
+  <!-- Popular Destinations -->
+  <section id="popular-destinations">
+    <h2>Popular Destinations in Kashmir</h2>
+    <div class="destinations-slider" id="destinationsSlider"></div>
+  </section>
 
-<!-- Footer -->
-<footer>
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact & Booking</h2>
+    <p>Send a message or WhatsApp to book your trip with Tajamul.</p>
+    <form id="contactForm">
+      <div class="row">
+        <input id="name" name="name" placeholder="Your name" required />
+        <input id="email" name="email" type="email" placeholder="Email" required />
+      </div>
+      <textarea id="message" name="message" rows="4" placeholder="Tell us where you'd like to go" required></textarea>
+      <div class="row">
+        <button class="cta" type="submit">Send Request</button>
+        <a class="secondary" href="https://wa.me/919797472650" target="_blank">Quick Book on WhatsApp</a>
+      </div>
+    </form>
+    <p class="small">Phone: +91 9797472650 • Email: <a href="mailto:shahtajamul88@gmail.com">shahtajamul88@gmail.com</a></p>
+  </section>
+</main>
+
+<footer class="site-footer">
   <p>© <span id="year"></span> Travel with Tajamul — Explore Kashmir</p>
-  <p>
-    Follow us:
-    <a href="https://www.facebook.com/share/1AyuynNPan/" target="_blank">Facebook</a> •
-    <a href="https://www.instagram.com/tajamull.shah?igsh=MW9nY3A2eHQ2aXV0Zg==" target="_blank">Instagram</a>
-  </p>
+  <p class="small">Follow us: <a href="https://www.instagram.com/tajamull.shah" target="_blank">Instagram</a> • <a href="https://www.facebook.com/share/1AyuynNPan/" target="_blank">Facebook</a></p>
 </footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919797472650" target="_blank" class="whatsapp-btn">💬</a>
 
 <script src="script.js"></script>
 </body>
