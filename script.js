@@ -1,25 +1,12 @@
-// Array of marquee images with labels and URLs
+// BookMyShow-style image carousel for Kashmir
 const kashmirMarqueeImages = [
-  {
-    name: "Dal Lake, Srinagar",
-    url: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    name: "Gulmarg (Snow)",
-    url: "https://images.unsplash.com/photo-1484291470158-47fede7c7432?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    name: "Pahalgam Valley",
-    url: "https://images.unsplash.com/photo-1518684079-78c43fb27c1a?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    name: "Sonamarg Meadows",
-    url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
-  }
+  { name: "Dal Lake, Srinagar", url: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=400&q=80" },
+  { name: "Gulmarg Meadows", url: "https://images.unsplash.com/photo-1484291470158-47fede7c7432?auto=format&fit=crop&w=400&q=80" },
+  { name: "Pahalgam Valley", url: "https://images.unsplash.com/photo-1518684079-78c43fb27c1a?auto=format&fit=crop&w=400&q=80" },
+  { name: "Sonamarg", url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" }
 ];
-// Duplicate for smooth infinite marquee
-const imagesTwice = [...kashmirMarqueeImages, ...kashmirMarqueeImages];
 
+const imagesTwice = [...kashmirMarqueeImages, ...kashmirMarqueeImages];
 const marqueeDiv = document.getElementById('image-marquee');
 imagesTwice.forEach(item => {
   const fig = document.createElement('figure');
