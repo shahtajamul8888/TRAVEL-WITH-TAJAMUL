@@ -1,93 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Travel with Tajamul – Explore Kashmir</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MakeMyTrip Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Reset and Basic Styles */
+        :root {
+            --primary-blue: #003b95;
+            --light-blue: #008cff;
+            --primary-orange: #ff6d00;
+            --text-dark: #333;
+            --text-light: #777;
+            --background-grey: #f2f2f2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-grey);
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: var(--primary-blue);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo img {
+            width: 110px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-right a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header-right a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #0549a8, #002a70);
+            padding-bottom: 100px;
+        }
+
+        /* Main Search Widget */
+        .search-widget {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab i {
+            font-size: 18px;
+        }
+        
+        .tab.active {
+            color: var(--light-blue);
+            border-bottom: 3px solid var(--light-blue);
+        }
+
+        .search-form {
+            padding: 20px;
+        }
+
+        .inputs-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .input-group {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        .input-group label {
+            font-size: 12px;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group .value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .input-group .sub-value {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .search-button-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .search-button {
+            background: linear-gradient(to right, #ff9b00, var(--primary-orange));
+            color: white;
+            border: none;
+            padding: 15px 60px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(255, 128, 0, 0.4);
+            transition: all 0.3s;
+        }
+        
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 128, 0, 0.5);
+        }
+
+        /* Offers Section */
+        .offers-section {
+            padding-top: 40px;
+        }
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .offer-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .offer-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .offer-content {
+            padding: 15px;
+        }
+        .offer-content h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .offer-content p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* App Download Section */
+        .app-download-section {
+            background-color: #eef5ff;
+            margin-top: 40px;
+            padding: 0 20px;
+        }
+        .app-download-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .app-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .app-text h2 {
+            font-size: 24px;
+        }
+        .app-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        .app-stores {
+            display: flex;
+            gap: 15px;
+        }
+        .app-stores img {
+            height: 40px;
+            cursor: pointer;
+        }
+        .app-image {
+            flex-shrink: 0;
+        }
+        .app-image img {
+            max-width: 250px;
+            display: block;
+        }
+        
+        /* Footer */
+        .site-footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .footer-column h4 {
+            font-size: 16px;
+            color: white;
+            margin-bottom: 15px;
+        }
+        .footer-column a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .footer-column a:hover {
+            color: var(--light-blue);
+        }
+        .social-media {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        .social-media a {
+            font-size: 20px;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 12px;
+            color: #888;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 24px;
+            }
+            .header-right {
+                gap: 10px;
+            }
+            .header-right a {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            .tab {
+                padding: 12px 10px;
+                font-size: 12px;
+            }
+            .tab i {
+                font-size: 16px;
+            }
+            .inputs-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            .app-download-content {
+                justify-content: center;
+                text-align: center;
+            }
+            .app-stores {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+             .header .logo img {
+                width: 90px;
+            }
+            .inputs-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="navbar-content">
-      <div class="nav-brand">
-        <img src="https://iconape.com/wp-content/files/xv/133790/png/ticket-movie-icon.png" alt="logo" class="brand-logo" />
-        <span class="brand-name">TravelWithTajamul</span>
-      </div>
-      <nav class="nav-links">
-        <a class="nav-link active" href="#home">Home</a>
-        <a class="nav-link" href="#trips">Trips</a>
-        <a class="nav-link" href="#destinations">Destinations</a>
-        <a class="nav-link" href="#gallery">Gallery</a>
-        <a class="nav-link" href="#contact">Contact</a>
-      </nav>
-      <a href="https://wa.me/919797472650" class="book-btn">Book Now</a>
-    </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1 class="hero-title">Unforgettable Kashmir Experiences</h1>
-      <p class="hero-desc">Curated tours, local guides, houseboats, treks & culture – all in a BookMyShow-inspired booking experience.</p>
-      <a href="#trips" class="hero-cta">View Trips</a>
-    </div>
-    <div class="marquee-container">
-      <div id="image-marquee" class="image-marquee"></div>
-    </div>
-  </section>
-
-  <!-- Trip Cards (Section like BookMyShow “Unmissables/Events”) -->
-  <section class="cards-section" id="trips">
-    <h2 class="section-title">Featured Trips</h2>
-    <div class="card-grid">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80" alt="Dal Lake Houseboat" />
-        <div class="card-info">
-          <div class="card-title">Classic Kashmir</div>
-          <div class="card-meta">4 Days, Houseboat Stay</div>
-          <div class="card-price">₹12,000/person</div>
-          <a href="https://wa.me/919797472650" class="card-btn">Book Tickets</a>
+    <header class="header">
+        <div class="logo">
+            <img src="https://imgak.mmtcdn.com/pwa_v3/pwa_hotel_assets/header/logo@2x.png" alt="MakeMyTrip Logo">
         </div>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1484291470158-47fede7c7432?auto=format&fit=crop&w=600&q=80" alt="Gulmarg" />
-        <div class="card-info">
-          <div class="card-title">Snowy Gulmarg</div>
-          <div class="card-meta">Day Trip, Skiing</div>
-          <div class="card-price">₹4,999/person</div>
-          <a href="https://wa.me/919797472650" class="card-btn">Book Tickets</a>
+        <div class="header-right">
+            <a href="#"><i class="fa-solid fa-briefcase"></i> My Trips</a>
+            <a href="#"><i class="fa-solid fa-user-circle"></i> Login or Create Account</a>
         </div>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1518684079-78c43fb27c1a?auto=format&fit=crop&w=600&q=80" alt="Pahalgam" />
-        <div class="card-info">
-          <div class="card-title">Pahalgam Valley</div>
-          <div class="card-meta">3 Days, Riverside Stay</div>
-          <div class="card-price">₹9,000/person</div>
-          <a href="https://wa.me/919797472650" class="card-btn">Book Tickets</a>
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="container">
+                <div class="search-widget">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="flights"><i class="fa-solid fa-plane"></i><span>Flights</span></div>
+                        <div class="tab" data-tab="hotels"><i class="fa-solid fa-hotel"></i><span>Hotels</span></div>
+                        <div class="tab" data-tab="homestays"><i class="fa-solid fa-house"></i><span>Homestays</span></div>
+                        <div class="tab" data-tab="holidays"><i class="fa-solid fa-umbrella-beach"></i><span>Holiday Packages</span></div>
+                        <div class="tab" data-tab="trains"><i class="fa-solid fa-train"></i><span>Trains</span></div>
+                    </div>
+                    <div class="search-form">
+                        <div class="inputs-row">
+                            <div class="input-group"><label>From</label><div class="value">New Delhi</div><div class="sub-value">DEL, India</div></div>
+                            <div class="input-group"><label>To</label><div class="value">Bengaluru</div><div class="sub-value">BLR, India</div></div>
+                            <div class="input-group"><label>Departure</label><div class="value">19 Sep'25</div><div class="sub-value">Friday</div></div>
+                            <div class="input-group"><label>Return</label><div class="value">25 Sep'25</div><div class="sub-value">Thursday</div></div>
+                            <div class="input-group"><label>Travellers & Class</label><div class="value">1 Adult</div><div class="sub-value">Economy/Premium</div></div>
+                        </div>
+                        <div class="search-button-container">
+                            <button class="search-button">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div>
-        <span>© <span id="year"></span> Travel with Tajamul</span>
-      </div>
-      <div>
-        <a href="https://www.instagram.com/tajamull.shah" target="_blank">Instagram</a> ·
-        <a href="https://www.facebook.com/share/1AyuynNPan/" target="_blank">Facebook</a>
-      </div>
-      <div>Developed by Tajamul</div>
-    </div>
-  </footer>
+        <section class="container offers-section">
+            <h2>Offers</h2>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <img src="https://placehold.co/600x400/003b95/white?text=Flights" alt="Flight Offers">
+                    <div class="offer-content">
+                        <h3>Domestic Flights</h3>
+                        <p>Up to 25% OFF on your first flight booking.</p>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <img src="https://placehold.co/600x400/008cff/white?text=Hotels" alt="Hotel Offers">
+                    <div class="offer-content">
+                        <h3>International Hotels</h3>
+                        <p>Enjoy flat 15% OFF on hotels in Dubai & Singapore.</p>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <img src="https://placehold.co/600x400/ff6d00/white?text=Holidays" alt="Holiday Offers">
+                    <div class="offer-content">
+                        <h3>Holiday Packages</h3>
+                        <p>Book a trip to Thailand starting at ₹25,000.</p>
+                    </div>
+                </div>
+                 <div class="offer-card">
+                    <img src="https://placehold.co/600x400/222222/white?text=Cabs" alt="Cab Offers">
+                    <div class="offer-content">
+                        <h3>Airport Cabs</h3>
+                        <p>Get zero cancellation fees on all airport rides.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <script src="js/gallery.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+        <section class="app-download-section">
+            <div class="container app-download-content">
+                <div class="app-text">
+                    <h2>Download App Now!</h2>
+                    <p>Get the best travel deals and manage your bookings on the go with our top-rated app.</p>
+                    <div class="app-stores">
+                        <img src="https://imgak.mmtcdn.com/pwa_v3/pwa_commons_assets/desktop/google-play-v2.png" alt="Google Play Store">
+                        <img src="https://imgak.mmtcdn.com/pwa_v3/pwa_commons_assets/desktop/app-store-v2.png" alt="Apple App Store">
+                    </div>
+                </div>
+                <div class="app-image">
+                    <img src="https://imgak.mmtcdn.com/pwa_v3/pwa_commons_assets/desktop/landingSprite.png" alt="MMT App on a phone">
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h4>Our Products</h4>
+                <a href="#">Flights</a>
+                <a href="#">Hotels</a>
+                <a href="#">Holiday Packages</a>
+                <a href="#">Trains</a>
+                <a href="#">Cabs</a>
+            </div>
+             <div class="footer-column">
+                <h4>About Us</h4>
+                <a href="#">About MMT</a>
+                <a href="#">Investor Relations</a>
+                <a href="#">Careers</a>
+                <a href="#">MMT Foundation</a>
+                <a href="#">Legal</a>
+            </div>
+             <div class="footer-column">
+                <h4>Help</h4>
+                <a href="#">Customer Support</a>
+                <a href="#">Payment Options</a>
+                <a href="#">Booking FAQs</a>
+                <a href="#">Report a Bug</a>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-media">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MakeMyTrip Clone. All rights reserved. This is a visual clone for educational purposes only.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    console.log('Switched to tab:', tab.dataset.tab);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
