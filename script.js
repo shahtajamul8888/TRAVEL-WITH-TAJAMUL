@@ -1,107 +1,62 @@
-// Tabs
-const tabs = document.querySelectorAll('.tab');
-let activeTab = 'flights';
-tabs.forEach(t => t.addEventListener('click', () => {
-  tabs.forEach(x => {
-    x.classList.remove('active');
-    x.setAttribute('aria-selected', 'false');
-  });
-  t.classList.add('active');
-  t.setAttribute('aria-selected', 'true');
-  activeTab = t.dataset.tab;
-  document.getElementById('trav').placeholder =
-    activeTab === 'hotels' ? '2 Guests • 1 Room' :
-    activeTab === 'packages' ? '2 Travellers' :
-    '1 Adult • Economy';
-}));
-
-// Swap locations
-document.getElementById('swapBtn').addEventListener('click', () => {
-  const a = document.getElementById('from');
-  const b = document.getElementById('to');
-  [a.value, b.value] = [b.value, a.value];
-  a.focus();
-});
-
-// Presets click + keyboard access
-function setWeekend() {
-  const now = new Date();
-  const day = now.getDay(); // 0=Sun..6=Sat
-  const toSat = (6 - day + 7) % 7 || 7;
-  const toSun = (7 - day + 7) % 7 || 8;
-  const sat = new Date(); sat.setDate(now.getDate() + toSat);
-  const sun = new Date(); sun.setDate(now.getDate() + toSun);
-  document.getElementById('depart').value = sat.toISOString().slice(0,10);
-  document.getElementById('return').value = sun.toISOString().slice(0,10);
+:root{
+  --bg:#0F4C5C;       /* Deep Teal */
+  --card:#123840;     /* Darker teal for panels */
+  --acc:#F4BF4F;      /* Warm Gold */
+  --acc-2:#4FB3F6;    /* Sky Blue */
+  --txt:#F5E6CA;      /* Soft Sand */
+  --muted:#BFD8D2;    /* Muted teal-gray */
+  --border:#1f2a44;
+  --danger:#ef476f;
 }
-function setMonth() {
-  const d = new Date();
-  d.setDate(1);
-  const start = d.toISOString().slice(0,10);
-  const e = new Date(d); e.setMonth(e.getMonth()+1); e.setDate(0);
-  const end = e.toISOString().slice(0,10);
-  document.getElementById('depart').value = start;
-  document.getElementById('return').value = end;
+*{box-sizing:border-box}
+html,body{
+  margin:0;padding:0;
+  background:linear-gradient(180deg,#0a1020 0%,var(--bg) 100%);
+  color:var(--txt);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif
 }
-function toggleNonstop(el) {
-  el.classList.toggle('active');
-  el.style.borderColor = el.classList.contains('active') ? 'var(--acc)' : 'var(--border)';
+a{color:inherit;text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:16px}
+header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:36px;height:36px;border-radius:8px;display:grid;place-items:center;
+  background:conic-gradient(from 220deg at 50% 50%, var(--acc), var(--acc-2), var(--acc));
+  box-shadow:0 10px 30px rgba(244,191,79,.25);
 }
-
-document.querySelectorAll('.pill').forEach(p => {
-  p.addEventListener('click', () => {
-    if (p.dataset.preset === 'weekend') setWeekend();
-    if (p.dataset.preset === 'month') setMonth();
-    if (p.dataset.preset === 'nonstop') toggleNonstop(p);
-  });
-  p.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      p.click();
-    }
-  });
-});
-
-// Date guards: no past dates
-const departInput = document.getElementById('depart');
-const returnInput = document.getElementById('return');
-const today = new Date(); today.setHours(0,0,0,0);
-const todayISO = today.toISOString().slice(0,10);
-departInput.min = todayISO;
-returnInput.min = todayISO;
-
-departInput.addEventListener('change', () => {
-  if (returnInput.value && returnInput.value < departInput.value) {
-    returnInput.value = departInput.value;
-  }
-  returnInput.min = departInput.value || todayISO;
-});
-
-// Search submit
-document.getElementById('searchForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const q = {
-    tab: activeTab,
-    from: document.getElementById('from').value.trim(),
-    to: document.getElementById('to').value.trim(),
-    depart: departInput.value,
-    ret: returnInput.value,
-    trav: document.getElementById('trav').value.trim(),
-    nonstop: !!document.querySelector('.pill[data-preset="nonstop"].active')
-  };
-
-  // Basic validation
-  if (!q.from || !q.to) {
-    alert('Please enter both origin and destination.');
-    return;
-  }
-  if (!q.depart) {
-    alert('Please select a departure date.');
-    return;
-  }
-
-  const params = new URLSearchParams(q).toString();
-  // Placeholder: navigate to results page when ready
-  alert('Searching: ' + params);
-  // window.location.href = '/results?' + params;
-});
+.brand h1{font-size:18px;margin:0;font-weight:700;letter-spacing:.3px}
+.cta{display:flex;gap:10px}
+.btn{
+  padding:10px 14px;border:1px solid var(--border);background:transparent;color:var(--txt);
+  border-radius:10px;font-weight:600;cursor:pointer;transition:.2s;
+}
+.btn:hover{border-color:var(--acc);box-shadow:0 6px 18px rgba(244,191,79,.18)}
+.btn-primary{background:var(--acc);border-color:transparent;color:#031316}
+.hero{
+  display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;margin:18px 0 24px;
+}
+.hero-copy h2{font-size:36px;line-height:1.1;margin:0 0 10px}
+.hero-copy p{color:var(--muted);margin:0 0 16px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#0f1b30;border:1px solid var(--border);color:var(--muted);padding:8px 12px;border-radius:999px}
+.glow{color:var(--acc);font-weight:700}
+.panel{
+  background:rgba(18,56,64,.85);backdrop-filter:blur(8px);border:1px solid var(--border);
+  border-radius:16px;padding:14px;
+  box-shadow:0 12px 40px rgba(3,10,28,.45), inset 0 1px 0 rgba(255,255,255,.03);
+}
+.tabs{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.tab{
+  padding:8px 12px;border:1px solid var(--border);border-radius:999px;color:var(--muted);cursor:pointer;background:#0f1b30;transition:.2s
+}
+.tab.active{border-color:var(--acc);color:#0b1320;background:linear-gradient(180deg,var(--acc-2),var(--acc))}
+.form{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:end
+}
+.field{display:flex;flex-direction:column;gap:6px}
+label{font-size:12px;color:var(--muted)}
+input,select,button{
+  height:42px;border-radius:10px;border:1px solid var(--border);background:#0f1b30;color:var(--txt);
+  padding:10px 12px;font-size:14px;outline:0;transition:.2s
+}
+input:focus,select:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(244,191,79,.2)}
+.swap{
