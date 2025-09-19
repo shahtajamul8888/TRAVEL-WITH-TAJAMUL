@@ -9,12 +9,10 @@
 </head>
 <body>
 
-<!-- Entrance Animation -->
 <div id="entrance-animation" aria-label="Welcome screen animation">
   <span class="entrance-text">TRAVEL KASHMIR WITH TAJAMUL</span>
 </div>
 
-<!-- Background Slideshow -->
 <div id="bg-slideshow" class="bg-slideshow" aria-hidden="true"></div>
 
 <header class="site-header" role="banner">
@@ -32,7 +30,24 @@
 </header>
 
 <main id="home" role="main">
-  <!-- Hero Section -->
+
+  <section class="image-marquee-container" aria-label="Scrolling images of Kashmir">
+    <div class="image-marquee">
+      <img src="https://images.unsplash.com/photo-1600223299458-f938a5355a24?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Shikara boats on Dal Lake in Srinagar" />
+      <img src="https://images.unsplash.com/photo-1595856488757-83845b4c4623?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Snow-covered meadows of Gulmarg" />
+      <img src="https://images.unsplash.com/photo-1627891149927-59f5b698547a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Lidder River in Pahalgam Valley" />
+      <img src="https://images.unsplash.com/photo-1610931293298-562a7d25dd59?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Scenic view of Sonamarg valley" />
+      <img src="https://images.unsplash.com/photo-1599422484294-8483f3e1088b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Aru Valley landscape in Kashmir" />
+      <img src="https://images.unsplash.com/photo-1622395420239-0268589c255d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Traditional Kashmiri architecture" />
+      <img src="https://images.unsplash.com/photo-1600223299458-f938a5355a24?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Shikara boats on Dal Lake in Srinagar" />
+      <img src="https://images.unsplash.com/photo-1595856488757-83845b4c4623?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Snow-covered meadows of Gulmarg" />
+      <img src="https://images.unsplash.com/photo-1627891149927-59f5b698547a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Lidder River in Pahalgam Valley" />
+      <img src="https://images.unsplash.com/photo-1610931293298-562a7d25dd59?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Scenic view of Sonamarg valley" />
+      <img src="https://images.unsplash.com/photo-1599422484294-8483f3e1088b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Aru Valley landscape in Kashmir" />
+      <img src="https://images.unsplash.com/photo-1622395420239-0268589c255d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Traditional Kashmiri architecture" />
+    </div>
+  </section>
+
   <section class="hero" aria-label="Hero Section presenting Travel Kashmir with Tajamul">
     <div class="hero-inner">
       <h1 id="typed-heading" aria-live="polite" aria-atomic="true" aria-relevant="text"></h1>
@@ -44,12 +59,11 @@
     </div>
   </section>
 
-  <!-- Services Section -->
   <section id="services" class="cards-section" aria-label="Our Services">
-    <h2>Our Services</h2>
+    <h2><a href="#services" class="section-title-link">Our Services</a></h2>
     <div class="cards">
       <article class="card" tabindex="0">
-        <h3>Simple Booking 🌄</h3>
+        <h3><a href="#services" class="section-title-link">Simple Booking 🌄</a></h3>
         <p>₹12,000 per person (2-3 days) with stay, lunch & dinner. Visit Gulmarg, Sonamarg, Pahalgam, Dal Lake, Mansbal Lake. Min-Max people: 4-20.</p>
         <ul>
           <li>Kashmir traditional tasty Wazwan</li>
@@ -58,10 +72,10 @@
           <li>Local guide</li>
           <li>House boat or Room Stay</li>
         </ul>
-        <a class="cta" href="https://wa.me/919797472650" target="_blank" rel="noopener">Book Now</a>
+        <a class="cta" href="https://wa.me/919797472650" target="_blank" rel="noopener">Book Simple</a>
       </article>
       <article class="card" tabindex="0">
-        <h3>Premium Booking ✨</h3>
+        <h3><a href="#services" class="section-title-link">Premium Booking ✨</a></h3>
         <p>₹19,000 per person (5-7 days) with stay, lunch & dinner. Visit 10+ places. Min-Max people: 4-20.</p>
         <ul>
           <li>Kashmir traditional tasty Wazwan</li>
@@ -70,12 +84,15 @@
           <li>Local guide</li>
           <li>House boat or Room Stay</li>
         </ul>
-        <a class="cta" href="https://wa.me/919797472650" target="_blank" rel="noopener">Book Now</a>
+        <a class="cta" href="https://wa.me/919797472650" target="_blank" rel="noopener">Book Premium</a>
       </article>
     </div>
   </section>
 
-  <!-- Itinerary Section -->
+  <section class="book-now-section">
+      <a href="https://wa.me/919797472650" target="_blank" rel="noopener" class="cta cta-large">Book Your Dream Kashmir Trip Now</a>
+  </section>
+
   <section id="itinerary" class="itinerary" aria-label="Sample 4-Day Itinerary">
     <h2>Sample 4-Day Itinerary</h2>
     <ol>
@@ -86,21 +103,18 @@
     </ol>
   </section>
 
-  <!-- Gallery Section -->
   <section id="gallery" class="gallery" aria-label="Gallery of Kashmir photographs">
     <h2>Gallery</h2>
     <div id="galleryGrid" class="thumbs"></div>
   </section>
 
-  <!-- Popular Destinations -->
   <section id="popular-destinations" aria-label="Popular Destinations in Kashmir">
     <h2>Popular Destinations in Kashmir</h2>
     <div class="destinations-slider" id="destinationsSlider" tabindex="0" aria-live="polite"></div>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="contact" aria-label="Contact and Booking Form">
-    <h2>Contact & Booking</h2>
+    <h2><a href="#contact" class="section-title-link">Contact & Booking</a></h2>
     <p>Send a message or WhatsApp to book your trip with Tajamul.</p>
     <form id="contactForm">
       <div class="row">
@@ -123,7 +137,6 @@
   <p class="footer-dev">Developed by Tajamul</p>
 </footer>
 
-<!-- WhatsApp Button -->
 <a href="https://wa.me/919797472650" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Contact via WhatsApp">💬</a>
 
 <script src="script.js"></script>
