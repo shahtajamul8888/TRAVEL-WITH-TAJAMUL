@@ -1,174 +1,263 @@
-/* ======= Animated Rainbow Gradient Background ======= */
-#bg-slideshow {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  background: linear-gradient(270deg,
-    #f0f4f8, #cfd8dc, #b0bec5, #90a4ae, #78909c,
-    #556f7a, #455a64, #37474f, #263238, #1c2833,
-    #f8bbd0, #f48fb1, #f06292, #ec407a, #e91e63,
-    #d81b60, #c2185b, #ad1457, #880e4f, #560027,
-    #bbdefb, #90caf9, #64b5f6, #42a5f5, #2196f3,
-    #1e88e5, #1976d2, #1565c0, #0d47a1, #08306b,
-    #a5d6a7, #81c784, #66bb6a, #4caf50, #43a047,
-    #388e3c, #2e7d32, #1b5e20, #33691e, #827717,
-    #fff9c4, #fff59d, #fff176, #ffee58, #ffeb3b,
-    #fdd835, #fbc02d, #f9a825, #f57f17, #ff8a65,
-    #ff7043, #ff5722, #f4511e, #e64a19, #d84315,
-    #bf360c, #3e2723, #4e342e, #5d4037, #6d4c41,
-    #7b5e57, #8d6e63, #a1887f, #bcaaa4, #d7ccc8
-  );
-  background-size: 3000% 3000%;
-  animation: premiumGradientMove 60s ease infinite;
+/* BookMyShow inspired color palette */
+:root {
+  --primary: #ff534f;
+  --secondary: #0275dd;
+  --dark-bg: #181c24;
+  --card-bg: #232a38;
+  --accent: #ffd002;
+  --text: #fff;
+  --gray: #eee;
 }
-@keyframes premiumGradientMove {
-  0%{background-position:0% 50%}
-  25%{background-position:50% 75%}
-  50%{background-position:100% 50%}
-  75%{background-position:50% 25%}
-  100%{background-position:0% 50%}
+
+body {
+  margin: 0;
+  background: var(--dark-bg);
+  color: var(--text);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  box-sizing: border-box;
 }
-/* ======= Entrance Animation (CSS ONLY) ======= */
-#entrance-animation.entrance-animation {
-  position: fixed;
-  inset: 0;
-  background: rgb(12, 14, 27);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 110;
-  animation: fadeOutEntrance 1s ease-in 4.5s forwards;
-}
-@keyframes fadeOutEntrance {
-  to {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-20px);
-    display: none;
-  }
-}
-.entrance-text {
-  font-size: 3.6rem;
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: 0.2em;
-  text-shadow:
-    0 0 15px #fff,
-    0 0 25px #ff6b6b,
-    0 0 45px #ff6b6b,
-    0 0 80px #ff6b6b;
-  animation: glowPulse 3s infinite alternate ease-in-out;
-}
-@keyframes glowPulse {
-  0% {
-    text-shadow:
-      0 0 10px #fff,
-      0 0 20px #ff6b6b,
-      0 0 30px #ff6b6b,
-      0 0 50px #ff6b6b;
-    opacity: 0.85;
-  }
-  100% {
-    text-shadow:
-      0 0 20px #fff,
-      0 0 40px #ff6b6b,
-      0 0 60px #ff6b6b,
-      0 0 90px #ff6b6b;
-    opacity: 1;
-  }
-}
-/* ======= All Fonts Bold ======= */
-body, html, h1, h2, h3, h4, h5, h6, p, a, li, input, textarea, button, label {
-  font-weight: bold !important;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-/* ======= Marquee Styles ======= */
-.image-marquee-container {
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
   width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.07);
+  z-index: 100;
+  border-bottom: 2px solid var(--primary);
+}
+.navbar-content {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 2em;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-logo {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  border: 2px solid var(--primary);
+  background: #fff;
+}
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+.nav-links {
+  display: flex;
+  gap: 2em;
+}
+.nav-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: #161616;
+  font-size: 1.02rem;
+  position: relative;
+  padding: 4px 2px;
+  transition: color 0.25s;
+}
+.nav-link.active,
+.nav-link:hover {
+  color: var(--primary);
+}
+.nav-link.active::after,
+.nav-link:hover::after {
+  content: "";
+  display: block;
+  margin: 2px auto -8px auto;
+  width: 120%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--primary);
+  animation: underline .25s;
+}
+@keyframes underline {
+  from { width: 0;}
+  to { width: 120%; }
+}
+.book-btn {
+  background: var(--primary);
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px #ff534f44;
+  font-size: 1.08rem;
+  transition: all 0.18s cubic-bezier(.55,0,.1,1);
+  text-decoration: none;
+}
+.book-btn:hover { background: var(--secondary); color: #fff; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(100deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #fff;
+  padding: 50px 0 8px 0;
+  text-align: center;
+  position: relative;
+}
+.hero-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  margin-bottom: 8px;
+}
+.hero-desc { font-size: 1.18rem; font-weight: 500; }
+.hero-cta {
+  display: inline-block;
+  margin: 22px auto 0 auto;
+  padding: 12px 32px;
+  background: var(--accent);
+  color: #212121;
+  font-weight: bolder;
+  font-size: 1.11rem;
+  border-radius: 7px;
+  text-decoration: none;
+  box-shadow: 0 2px 10px #ffd00233;
+  transition: all 0.17s cubic-bezier(.32,.62,.71,.53);
+}
+.hero-cta:hover {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 24px #ff534f88;
+}
+
+/* Marquee/Carousel */
+.marquee-container {
+  margin: 32px auto 0 auto;
+  width: 90vw;
+  max-width: 1220px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
   overflow: hidden;
-  padding: 20px 0;
-  background: rgba(0,0,0,0.2);
-  margin-top: -10px;
+  box-shadow: 0 4px 18px #ff534f15;
 }
 .image-marquee {
   display: flex;
-  width: max-content;
-  animation: scrollMarquee 40s linear infinite;
-  gap: 16px;
+  gap: 18px;
+  align-items: center;
+  animation: marquee-move 38s linear infinite;
+  width: fit-content;
+  margin: 0;
+  padding: 18px 0;
 }
-@keyframes scrollMarquee {
-  from { transform: translateX(0%); }
-  to { transform: translateX(-50%); }
+@keyframes marquee-move {
+  0% { transform: translateX(0);}
+  100% { transform: translateX(-50%);}
 }
 .image-marquee figure {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 8px;
+  min-width: 178px;
+  margin: 0 12px;
 }
 .image-marquee figcaption {
+  margin: 0 0 2px 0;
+  padding: 5px 14px;
+  font-weight: 700;
+  font-size: 1.07rem;
+  background: var(--primary);
   color: #fff;
-  background: rgba(255,107,107,0.88);
   border-radius: 7px 7px 0 0;
-  font-size: 1.1rem;
-  padding: 5px 12px;
-  margin-bottom: -3px;
-  font-family: inherit;
-  letter-spacing: 1px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  text-align: center;
-  text-shadow: 0 0 12px #ff6b6b;
+  text-shadow: 0 1px 6px #0002;
 }
 .image-marquee img {
-  height: 150px;
-  border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.38);
-  margin-bottom: 5px;
-  transition: transform 0.35s cubic-bezier(.77,0,.18,1);
+  width: 160px;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 14px #232a384c;
+  transition: transform .22s;
 }
 .image-marquee img:hover {
-  transform: scale(1.07) rotate(-2deg);
-  box-shadow: 0 7px 25px 5px #ff6b6b77, 0 4px 22px #222;
+  transform: scale(1.09) rotate(-2deg);
 }
-/* ======= Nav/Main Hover Animation ======= */
-.main-nav a, .main-cta, .cta, .secondary {
-  font-weight: bold;
-  position: relative;
-  transition: all 0.45s cubic-bezier(.57,-0.33,.42,1.45);
+
+/* Cards Section */
+.cards-section {
+  padding: 48px 0 40px 0;
+  background: var(--dark-bg);
 }
-.main-nav a:hover, .main-cta:hover, .cta:hover, .secondary:hover {
-  color: #fff !important;
-  background: linear-gradient(99deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3);
-  background-size: 400% 100%;
-  animation: nav-rainbow 2s linear infinite alternate;
-  box-shadow: 0 0 25px #ff6b6b99, 0 0 30px #9400d3;
-  border-color: #fff;
-  text-shadow: 0 0 24px #fff;
+.section-title {
+  text-align: left;
+  max-width: 1060px;
+  margin: 0 auto 32px auto;
+  font-size: 1.46rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 1px;
 }
-@keyframes nav-rainbow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 34px;
+  max-width: 1060px;
+  margin: auto;
 }
-/* ======= Sticky Header ======= */
-.site-header {
-  position: sticky;
-  top: 0;
-  background: rgba(20, 22, 40, 0.9);
-  backdrop-filter: blur(8px);
+.card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  overflow: hidden;
+  color: #fff;
+  box-shadow: 0 4px 22px #232a3822;
   display: flex;
-  justify-content: center;
-  z-index: 100;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+  flex-direction: column;
+  transition: box-shadow .2s, transform .2s;
 }
-.header-inner {
-  max-width: 1100px;
+.card:hover {
+  transform: translateY(-6px) scale(1.025);
+  box-shadow: 0 12px 38px #ff534f22, 0 4px 22px #232a3855;
+}
+.card img {
   width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0.8rem 1rem;
-  gap: 15px;
+  display: block;
+  height: 162px;
+  object-fit: cover;
 }
-/* WhatsApp floating button, footer, etc. - keep as original */
+.card-info {
+  padding: 18px 14px 18px 18px;
+}
+.card-title { font-size: 1.15rem; font-weight: 700; color: var(--accent);}
+.card-meta { color: var(--gray); font-size: .98rem; margin: 4px 0; }
+.card-price { font-size: 1.07rem; color: var(--primary); font-weight: 700;}
+.card-btn {
+  margin-top: 14px;
+  display: inline-block;
+  padding: 10px 23px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px #ff534f55;
+  transition: background .18s;
+}
+.card-btn:hover { background: var(--secondary);}
+.footer {
+  background: var(--primary);
+  color: #fff;
+  padding: 30px 0 22px 0;
+  text-align: center;
+}
+.footer-content { max-width: 1000px; margin: auto; font-size: 1.08rem; }
+.footer a { color: #fff; font-weight: 600; text-decoration: underline; }
+.footer a:hover { color: var(--secondary); }
+/* Responsive */
+@media (max-width: 700px) {
+  .navbar-content { padding: 0 0.6em; }
+  .marquee-container { width: 98vw; }
+  .card img { height: 110px;}
+  .footer-content { font-size: 0.98rem;}
+}
