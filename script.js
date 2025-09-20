@@ -1,6 +1,5 @@
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("opening").style.display = "none";
-    document.querySelector(".container").classList.remove("hidden");
-  }, 3000); // 3 sec delay
+document.querySelector('.booking-box form').addEventListener('submit', function(ev) {
+  ev.preventDefault();
+  alert('Search functionality is a demo. Add backend to enable live bookings!');
 });
+// Add slider or more interactive features as needed
