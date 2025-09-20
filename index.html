@@ -3,69 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Travel Kashmir</title>
+  <title>Travel Kashmir - MakeMyTrip Style</title>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <!-- Loading Animation -->
-  <div id="loading">
-    <h1>Travel Kashmir</h1>
-  </div>
-
-  <!-- Header -->
-  <header>
-    <h1>🌍 Travel with Tajamul</h1>
-    <p>Discover the beauty of Kashmir with us ✨</p>
-  </header>
-
-  <!-- Vertical Image Marquee -->
-  <section class="marquee-container">
-    <div class="marquee-vertical">
-      <img src="images/pexels-akhter-jan-2999193-11275773.jpg" alt="Kashmir 1"/>
-      <img src="images/pexels-amjed-wani-1355393378-26110235.jpg" alt="Kashmir 2"/>
-      <img src="images/pexels-imadclicks-31204203.jpg" alt="Kashmir 3"/>
-      <img src="images/pexels-imadclicks-3974036.jpg" alt="Kashmir 4"/>
-      <img src="images/pexels-imadclicks-6780256.jpg" alt="Kashmir 5"/>
-      <img src="images/pexels-imushahid-14177070.jpg" alt="Kashmir 6"/>
-      <img src="images/pexels-qaarif-16333025.jpg" alt="Kashmir 7"/>
-      <img src="images/pexels-saqlain-ashraf-clicks-2425782-29644949.jpg" alt="Kashmir 8"/>
-
-      <!-- Duplicate for smooth infinite loop -->
-      <img src="images/pexels-akhter-jan-2999193-11275773.jpg" alt="Kashmir 1"/>
-      <img src="images/pexels-amjed-wani-1355393378-26110235.jpg" alt="Kashmir 2"/>
-      <img src="images/pexels-imadclicks-31204203.jpg" alt="Kashmir 3"/>
-      <img src="images/pexels-imadclicks-3974036.jpg" alt="Kashmir 4"/>
-      <img src="images/pexels-imadclicks-6780256.jpg" alt="Kashmir 5"/>
-      <img src="images/pexels-imushahid-14177070.jpg" alt="Kashmir 6"/>
-      <img src="images/pexels-qaarif-16333025.jpg" alt="Kashmir 7"/>
-      <img src="images/pexels-saqlain-ashraf-clicks-2425782-29644949.jpg" alt="Kashmir 8"/>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">🌏 TravelKashmir</div>
+    <ul>
+      <li class="active">Flights</li>
+      <li>Hotels</li>
+      <li>Buses</li>
+      <li>Holidays</li>
+      <li>Offers</li>
+    </ul>
+    <div class="login-btn">Login/Sign Up</div>
+  </nav>
+  <!-- Hero Booking Section -->
+  <section class="hero-booking">
+    <div class="booking-box">
+      <h2>Book Your Perfect Trip</h2>
+      <form>
+        <input type="text" placeholder="From" required>
+        <input type="text" placeholder="To" required>
+        <input type="date" required>
+        <button type="submit" class="btn-gradient">Search</button>
+      </form>
+    </div>
+    <div class="hero-img">
+      <img src="images/pexels-akhter-jan-2999193-11275773.jpg" alt="Kashmir Snap"/>
     </div>
   </section>
-
-  <!-- Services -->
-  <section class="services">
-    <h2>✨ Our Services</h2>
-    <div class="buttons">
-      <button>🏔️ Gulmarg Tour</button>
-      <button>🏞️ Sonmarg Tour</button>
-      <button>🌊 Dal Lake Ride</button>
-      <button>⛷️ Adventure Trips</button>
+  <!-- Trending Destinations Slider -->
+  <section class="destination-slider">
+    <h2>Trending Destinations</h2>
+    <div class="slider">
+      <img src="images/pexels-imadclicks-6780256.jpg" alt="Gulmarg"/>
+      <img src="images/pexels-imushahid-14177070.jpg" alt="Sonmarg"/>
+      <img src="images/pexels-qaarif-16333025.jpg" alt="Dal Lake"/>
     </div>
   </section>
-
-  <!-- Other Info -->
-  <section class="other">
-    <h2>📌 Other Information</h2>
-    <p>We also provide hotel booking, cab services, and customized packages to make your Kashmir trip unforgettable.</p>
+  <!-- Deals & Offers -->
+  <section class="deals-section">
+    <h2>Exclusive Deals</h2>
+    <div class="card-row">
+      <div class="deal-card">
+        <h3>Cashback on Flights</h3>
+        <p>Book now and get up to ₹1000 cashback!</p>
+        <button class="colorful-btn">Grab Offer</button>
+      </div>
+      <div class="deal-card">
+        <h3>Hotel Discounts</h3>
+        <p>Flat 20% off on select stays.</p>
+        <button class="colorful-btn">See Hotels</button>
+      </div>
+      <div class="deal-card">
+        <h3>Adventure Packages</h3>
+        <p>Special rates for Gulmarg, Sonmarg adventures.</p>
+        <button class="colorful-btn">Explore Trips</button>
+      </div>
+    </div>
   </section>
-
-  <!-- Disclaimer -->
-  <footer class="disclaimer">
-    <img src="images/pexels-akhter-jan-2999193-11275773.jpg" alt="Kashmir" />
-    <p>Disclaimer: The images and content are for travel showcase purposes only. Conditions may vary depending on weather and availability.</p>
-    <small>🖥️ Developed by Tajamul</small>
+  <!-- Footer -->
+  <footer>
+    <div>
+      <small>🖥 Developed by Tajamul | For demo purposes only</small>
+    </div>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
