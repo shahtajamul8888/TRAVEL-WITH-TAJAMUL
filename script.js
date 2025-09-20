@@ -1,9 +1,6 @@
-// Fade-in Disclaimer Animation
-document.addEventListener("DOMContentLoaded", () => {
-  const disclaimer = document.querySelector(".disclaimer-content");
+window.addEventListener("load", () => {
   setTimeout(() => {
-    disclaimer.style.transition = "all 1s ease";
-    disclaimer.style.opacity = "1";
-    disclaimer.style.transform = "translateY(0)";
-  }, 400);
+    document.getElementById("opening").style.display = "none";
+    document.querySelector(".container").classList.remove("hidden");
+  }, 3000); // 3 sec delay
 });
