@@ -4,98 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Travel with Tajamul</title>
-  <meta name="description" content="Plan smarter, travel deeper. Flights, hotels, and curated packages with local insights." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <a class="brand" href="/" aria-label="Travel with Tajamul Home">
-        <div class="logo" aria-hidden="true">✦</div>
-        <h1>Travel with Tajamul</h1>
-      </a>
-      <nav class="cta" aria-label="Primary">
-        <button class="btn" type="button">Sign in</button>
-        <button class="btn btn-primary" type="button">My Trips</button>
-      </nav>
-    </header>
 
-    <section class="hero">
-      <div class="hero-copy">
-        <div class="badge">Your Journey • <span class="glow">From Kashmir to the World</span></div>
-        <h2>Plan smarter. Travel deeper. Make it yours.</h2>
-        <p>Search flights, stays, and curated packages with transparent pricing and local insights from Tajamul.</p>
-      </div>
+  <!-- Main Content -->
+  <main>
+    <h1>Welcome to Travel with Tajamul 🌍</h1>
+    <p>Explore ✈️ Discover 🏔️ Experience</p>
+  </main>
 
-      <div class="panel" role="region" aria-label="Search panel">
-        <div class="tabs" role="tablist" aria-label="Search type">
-          <button class="tab active" data-tab="flights" role="tab" aria-selected="true">Flights</button>
-          <button class="tab" data-tab="hotels" role="tab" aria-selected="false">Hotels</button>
-          <button class="tab" data-tab="packages" role="tab" aria-selected="false">Packages</button>
-        </div>
-
-        <form class="form" id="searchForm" autocomplete="off">
-          <div class="field group" data-role="from">
-            <label for="from">From</label>
-            <input id="from" name="from" placeholder="Srinagar (SXR)" />
-            <button type="button" class="swap" title="Swap" id="swapBtn" aria-label="Swap origin and destination">⟲</button>
-          </div>
-
-          <div class="field" data-role="to">
-            <label for="to">To</label>
-            <input id="to" name="to" placeholder="New Delhi (DEL)" />
-          </div>
-
-          <div class="field">
-            <label for="depart">Depart</label>
-            <input id="depart" name="depart" type="date" />
-          </div>
-
-          <div class="field">
-            <label for="return">Return</label>
-            <input id="return" name="return" type="date" />
-          </div>
-
-          <div class="field">
-            <label for="trav">Travellers & class</label>
-            <input id="trav" name="trav" placeholder="1 Adult • Economy" />
-          </div>
-
-          <div class="field">
-            <label>&nbsp;</label>
-            <button class="search-btn" type="submit">Search</button>
-          </div>
-        </form>
-
-        <div class="helper">
-          <div class="pill" data-preset="weekend">Next weekend</div>
-          <div class="pill" data-preset="month">This month</div>
-          <div class="pill" data-preset="nonstop">Non‑stop only</div>
-        </div>
-
-        <p class="note">Tip: You can search one‑way by leaving “Return” empty. Add price alerts after search.</p>
-
-        <div class="teaser">
-          <div class="card">
-            <h4>Flexible fares</h4>
-            <p>Free date changes on select airlines. See rules at checkout.</p>
-          </div>
-          <div class="card">
-            <h4>Verified stays</h4>
-            <p>Curated hotels with real guest photos and transparent ratings.</p>
-          </div>
-          <div class="card">
-            <h4>Local expertise</h4>
-            <p>Route tips, seasons, and permits—especially for the Himalayas.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>© Travel with Tajamul. Original design and code. All rights reserved.</footer>
-  </div>
+  <!-- Disclaimer (Sticky Footer) -->
+  <footer class="disclaimer">
+    <div class="disclaimer-content fade-in">
+      <img src="your-photo.jpg" alt="Founder - Travel with Tajamul" class="disclaimer-img" />
+      <p>
+        <strong>Disclaimer:</strong> 🌍 Travel with Tajamul ✈️ is an independent travel 
+        platform. While we aim to provide authentic experiences from Kashmir 🏔️ 
+        to the world, the views expressed are personal and do not represent any 
+        official authority. 🙏 Travelers are advised to verify permits, local 
+        guidelines, and safety measures before planning trips. ✅
+      </p>
+    </div>
+  </footer>
 
   <script src="app.js"></script>
 </body>
